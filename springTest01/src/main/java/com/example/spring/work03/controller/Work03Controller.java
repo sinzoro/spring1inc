@@ -21,49 +21,49 @@ public class Work03Controller {
 	
 	
 	
-	@RequestMapping(value="fileUploadTest.do")
-	public String fileUploadTest( MultipartHttpServletRequest request
-			,Model model ) {
-		
-		String rootUploadDir = "C:"+File.separator+"/Upload";
-		
-		File dir = new File( rootUploadDir + File.separator + "testfile" );
-		
-		if( !dir.exists() ) {
-			dir.mkdirs();
-		}
-				
-		Iterator<String> iterator = request.getFileNames();
-				
-		int fileLoop = 0;
-		String uploadFileName;
-		MultipartFile mFile = null;
-		String orgFileName = "";
-		String sysFileName = "";
-		
-		while( iterator.hasNext() ) {
-			fileLoop++;
-			
-			uploadFileName = iterator.next();
-			mFile = request.getFile(uploadFileName);
-			
-			orgFileName = mFile.getOriginalFilename();
-			
-			if( orgFileName != null && orgFileName.equals("") ) {
-				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss-"+"");
-				Calendar calendar = Calendar.getInstance();
-				//sysFileName = 
-			}
-			
-			
-			
-			
-			
-		}
-		
-		
-				
-		return null;
-	}
+//	@RequestMapping(value="fileUploadTest.do")
+//	public String fileUploadTest( MultipartHttpServletRequest request
+//			,Model model ) {
+//		
+//		String rootUploadDir = "C:"+File.separator+"/Upload";
+//		
+//		File dir = new File( rootUploadDir + File.separator + "testfile" );
+//		
+//		if( !dir.exists() ) {
+//			dir.mkdirs();
+//		}
+//				
+//		Iterator<String> iterator = request.getFileNames();
+//				
+//		int fileLoop = 0;
+//		String uploadFileName;
+//		MultipartFile mFile = null;
+//		String orgFileName = "";
+//		String sysFileName = "";
+//		
+//		while( iterator.hasNext() ) {
+//			fileLoop++;
+//			
+//			uploadFileName = iterator.next();
+//			mFile = request.getFile(uploadFileName);
+//			
+//			orgFileName = mFile.getOriginalFilename();
+//			
+//			if( orgFileName != null && orgFileName.equals("") ) {
+//				SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss-"+"");
+//				Calendar calendar = Calendar.getInstance();
+//				//sysFileName = 
+//			}
+//			
+//			
+//			
+//			
+//			
+//		}
+//		
+//		
+//				
+//		return null;
+//	}
 	
 }

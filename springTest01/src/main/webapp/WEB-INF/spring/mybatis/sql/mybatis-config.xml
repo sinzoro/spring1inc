@@ -13,7 +13,7 @@
 	</typeAliases>
 
 	<plugins>
-		<plugin interceptor="com.example.spring.common.MybatisLogInterceptor2" ></plugin>
+		<plugin interceptor="com.example.spring.common.MybatisLogInterceptor" ></plugin>
 	</plugins>
 	
 	<mappers><!-- 기능에해당되는쿼리만넣겠다 -->
