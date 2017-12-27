@@ -1,4 +1,4 @@
-package com.example.spring;
+package com.example.spring.param.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
@@ -17,10 +18,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.spring.entity.Member;
+import com.example.spring.param.service.ParamService;
 
 @Controller
 public class ParamController{
    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(ParamController.class);
+   
+   
+   @Autowired
+   private ParamService paramService;
+
    
    @RequestMapping(value="/paramTest.do")
    public String paramTest(HttpServletRequest request, Model model) throws Exception {
@@ -195,6 +202,25 @@ public class ParamController{
    }
    
    
+   @RequestMapping(value="/paramTest88.do")
+   public String paramTest88(
+		   
+		   @RequestParam HashMap<String, Object> params, 
+		   Model model) throws Exception {
+	   
+	  logger.info("id:" +  params.get("id") );
+	  logger.info("name:" + params.get("name") );
+	  logger.info("email:" + params.get("email") );
+	  logger.info("hobby:" + params.get("hobby") );
+	  logger.info("hobby.size:" + params.get("hobby") );
+	  
+	  
+	  paramService.paramView(params);
+	  
+	  model.addAttribute("params",params);
+	  
+      return "/param/paramTest88";
+   }
    
    
    

@@ -100,12 +100,12 @@ public class DepartmentController {
 	}
 	
 	//파일 업로드
-	@RequestMapping(value="fileUploadTest.do")
+	@RequestMapping(value="fileUploadTest5.do")
 	public String fileUploadTest(MultipartHttpServletRequest request
 			, Model model) {
 		
 		/*String rootUploadDir = "c:/Upload";*/
-		String rootUploadDir = "c:"+File.separator+"Upload"; // 이 위치에 파일을 저장하겠다(C:\Upload\testfile //////  File.separator는 C:와 Upload 사이의 "\") 
+		String rootUploadDir = "c:"+File.separator+"Upload3"; // 이 위치에 파일을 저장하겠다(C:\Upload\testfile //////  File.separator는 C:와 Upload 사이의 "\") 
 		
 		File dir = new File(rootUploadDir + File.separator + "testfile");
 		
@@ -116,7 +116,7 @@ public class DepartmentController {
 		Iterator<String> iterator = request.getFileNames(); //업로드된 파일정보 수집
 		
 		int fileLoop = 0;
-		String uploadFileName; 
+		String uploadFileName;
 		MultipartFile mFile = null;
 		String orgFileName="";
 		String sysFileName="";
@@ -151,7 +151,7 @@ public class DepartmentController {
 		
 		model.addAttribute("list", list); //list란 이름으로 저장
 		
-		return "fileTest/fileResult";
+		return "depart/departmentList";
 	}
 	
 	//파일 업로드 실행

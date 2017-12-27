@@ -59,7 +59,7 @@ public void departmentUpdate(HashMap<String, String> map) {
 //파일 업로드
 	public void fileUpload(HashMap<String, Object> map, List<MultipartFile> fileList){
 		
-		String rootPath = "c:" + File.separator +"Upload";
+		String rootPath = "c:" + File.separator +"Upload3";
 		String uploadPath = rootPath + File.separator + "testfile";
 		int fileLoop = 0;
 		String orgFileName = "";

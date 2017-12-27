@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+<script src="/spring/resources/common/js/paging.js"></script>
+
 <script type="text/javascript">
   	
   	//upload파일 첨부 클릭시 div생성
@@ -27,7 +32,7 @@
 </head>
 <body>
 	
-	<form action="/spring/fileuploadTest.do" enctype="multipart/form-data" method="post">
+	<form action="/spring/fileuploadTest2.do" enctype="multipart/form-data" method="post">
 		id : <input type="text" name="id"><br>
 		name : <input type="text" name="name"><br>
 		email : <input type="text" name="email"><br>

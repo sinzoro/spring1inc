@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/spring/requestParam7.do">
+<form action="/spring/requestParam88.do">
 <p>id<input type="text" name="id">
 <p>name<input type="text" name="name">
 <p>email<input type="text" name="email">
