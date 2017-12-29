@@ -223,6 +223,27 @@ public class ParamController{
    }
    
    
+   // 404 에러 CommonError
+   @RequestMapping(value="/paramTest90.do")
+   public String paramTest90(
+		   
+		   @RequestParam HashMap<String, Object> params, 
+		   Model model) throws Exception {
+	   
+	  logger.info("id:" +  params.get("id") );
+	  logger.info("name:" + params.get("name") );
+	  logger.info("email:" + params.get("email") );
+	  logger.info("hobby:" + params.get("hobby") );
+	  logger.info("hobby.size:" + params.get("hobby") );
+	  
+	  
+	  paramService.paramView(params);
+	  
+	  model.addAttribute("params",params);
+	  
+      return "/param/defaultPage1";
+   }
+   
    
 }
 

@@ -10,7 +10,8 @@
 
 	function paramTest(){
 		
-		frm.action = "/spring/paramTest88.do";
+		//frm.action = "/spring/paramTest88.do";
+		frm.action = "/spring/paramTest90.do";
 		frm.submit();
 		
 	}
