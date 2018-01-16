@@ -17,17 +17,27 @@ public class PayimfDao {
 	public List<HashMap<String, String>> getAllowanceData(){
 		List<HashMap<String, String>> list = null;
 		
-		list = this.sqlSession.selectList(nameSpaceName + "allowanceList");
+		String divSal = "basic";
+		
+		list = this.sqlSession.selectList(nameSpaceName + "allowanceList",divSal);
 		
 		return list;
 	}
 	
 	public int allowanceDataInsert(HashMap<String, String> map){
+		
 		List<HashMap<String, String>> list = null;
+		list = getAllowanceData();
 		
 		int rsNum = 0;
-		if( this.sqlSession.selectList(nameSpaceName + "allowanceInsert") == null ){
+		if( list.size() == 0 ){
+			this.sqlSession.insert(nameSpaceName + "allowanceInsert");
 			rsNum = 1;
+		}else if( list.size() == 1 ){
+			this.sqlSession.update(nameSpaceName + "allowanceUpdate");
+			rsNum = 1;
+		}else {
+			//System.out.println( "basic 값이 없거나 하나 있지 않습니다." );
 		}
 		
 		return rsNum;

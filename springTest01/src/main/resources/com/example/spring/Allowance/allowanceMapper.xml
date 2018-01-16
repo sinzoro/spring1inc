@@ -3,21 +3,21 @@
 
 
 <mapper namespace="allowance">
-	<select id="allowanceList" parameterType="HashMap" resultType="HashMap">
-		/* /test/testMapper.xml - testList ( 테스트 조회 ) */
-		SELECT
-				*                                    /* X_ID */
-		FROM    department          /* FRIEND Table */
-		WHERE dept_name = 'Lucian'
+	<select id="allowanceList" parameterType="String" resultType="HashMap">
+		/* /allowance/allowanceMapper.xml - allowanceList ( allowanceList 기본 조회 ) */
+		SELECT	
+		*                   /* all */
+		FROM    sal_common          /* sal_common Table */
+		WHERE sal_type = #{divSal}
 	</select>
 	
 	<insert id="allowanceInsert" parameterType="HashMap" >
 		/* /department/departmetnMapper.xml - departmentInsert (확과등록) */
-		INSERT INTO DEPARTMENT 
-			(DEPT_CODE	/*학과코드*/
-			, DEPT_NAME	/*학과명*/
-			, DEPT_ENAME	/*학과영문명*/
-			, CREATE_DATE)	/*학과생성일자*/
+		INSERT INTO sal_common 
+			(sal_type	/*학과코드*/
+			, scom_hh_cst	/*학과명*/
+			, scom_nh_cst	/*학과영문명*/
+			, scom_elh_cst)	/*학과생성일자*/
 		VALUES(#{deptCode}	/*학과코드*/
 		,#{deptName}	/*학과명*/
 		,#{deptEname}	/*학과영문명*/
