@@ -1,0 +1,38 @@
+<!--?xml version="1.0" encoding="UTF-8"? -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="allowance">
+	<select id="allowanceList" parameterType="HashMap" resultType="HashMap">
+		/* /test/testMapper.xml - testList ( 테스트 조회 ) */
+		SELECT
+				*                                    /* X_ID */
+		FROM    department          /* FRIEND Table */
+		WHERE dept_name = 'Lucian'
+	</select>
+	
+	<insert id="allowanceInsert" parameterType="HashMap" >
+		/* /department/departmetnMapper.xml - departmentInsert (확과등록) */
+		INSERT INTO DEPARTMENT 
+			(DEPT_CODE	/*학과코드*/
+			, DEPT_NAME	/*학과명*/
+			, DEPT_ENAME	/*학과영문명*/
+			, CREATE_DATE)	/*학과생성일자*/
+		VALUES(#{deptCode}	/*학과코드*/
+		,#{deptName}	/*학과명*/
+		,#{deptEname}	/*학과영문명*/
+		,now() )/*학과생성일자*/
+	</insert>
+	
+	<update id="allowanceUpdate" parameterType="HashMap" >
+		/* /department/departmetnMapper.xml - departmentUpdate (확과등록) */
+		UPDATE DEPARTMENT SET 
+			DEPT_CODE = #{deptCode}	/*학과코드*/
+			, DEPT_NAME = #{deptName}	/*학과명*/
+			, DEPT_ENAME = #{deptEname}	/*학과영문명*/
+			, CREATE_DATE = now() 	/*학과생성일자*/
+		where DEPT_CODE = #{deptCode}
+	</update>
+	
+</mapper>
+
