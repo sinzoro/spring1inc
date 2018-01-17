@@ -46,9 +46,15 @@
 		
     </beans:bean>
     
-    <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <!-- <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     	<beans:property name="dataSource" ref="dataSource2"></beans:property>
         <beans:property name="configLocation" value="/WEB-INF/spring/mybatis/sql/mybatis-config.xml"></beans:property>
+    </beans:bean> -->
+    
+    <beans:bean id="sqlSessionFactory" class="com.example.spring.util.RefreshableSqlSessionFactoryBean" >
+    	<beans:property name="dataSource" ref="dataSource2"></beans:property>
+        <beans:property name="configLocation" value="/WEB-INF/spring/mybatis/sql/mybatis-config.xml"></beans:property>
+        <beans:property name="interval" value="2000" />
     </beans:bean>
 
     

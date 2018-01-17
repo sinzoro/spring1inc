@@ -22,11 +22,15 @@ public class PayimfService {
 		return list;
 	}
 	
-	public int allowanceDataInsert(HashMap<String, String> map){
+	public HashMap<String, String> allowanceDataInsert(HashMap<String, String> map){
+		
+		map.put("divSal", "basic");
 		
 		int rsNum = payimfDao.allowanceDataInsert(map);
-		
-		return 0;
+		if( rsNum == 1) {
+			map = getAllowanceData().get(0);
+		}
+		return map;
 	}
 	
 	

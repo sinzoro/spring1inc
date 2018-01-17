@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.spring.department.controller.DepartmentController;
@@ -34,34 +36,34 @@ public class PayimfController {
 	}
 	
 	@RequestMapping(value="allowanceDataInsert.do")
-	public ModelAndView allowanceDataInsert(HttpServletRequest request) {
+	public @ResponseBody HashMap<String, String> allowanceDataInsert( @RequestParam HashMap<String, String> map ) {
 		
-		HashMap<String, String> map = new HashMap<String, String>();
+//		HashMap<String, String> aMap = new HashMap<String, String>();
+//		
+//		String scomHhCst = map.get("scomHhCst");	/*주간근무시간당비용*/
+//		String scomNhCst = map.get("scomNhCst");	/*야간근무시간당비용*/
+//		String scomLhCst = map.get("scomLhCst");	/*지각*/
+//		String scomElhCst = map.get("scomElhCst");	/*식대*/
+//		String sempCmc = map.get("sempCmc");	/*차량유지비*/
+//		
+//		logger.debug("scomHhCst:"+scomHhCst );
+//		logger.debug("scomNhCst:"+scomNhCst );
+//		logger.debug("scomLhCst:"+scomLhCst );
+//		logger.debug("scomElhCst:"+scomElhCst );
+//		logger.debug("sempCmc:"+sempCmc );
+//		
+//		aMap.put("scomHhCst",scomHhCst);
+//		aMap.put("scomNhCst",scomNhCst);
+//		aMap.put("scomLhCst",scomLhCst);
+//		aMap.put("scomElhCst",scomElhCst);
+//		//aMap.put("sempCmc",sempCmc);
+//		aMap.put("sempCmc","sssss");
 		
-		String nightTimeAllowance = request.getParameter("nightTimeAllowance");
-		String carMaintenanceCost = request.getParameter("carMaintenanceCost");
-		String dayTimeAllowance = request.getParameter("dayTimeAllowance");
-		String foodCost = request.getParameter("foodCost");
-		String lateness = request.getParameter("lateness");
+		logger.debug("scomHhCst:"+map.get("scomHhCst") );
 		
-		logger.debug("s:"+nightTimeAllowance );
-		logger.debug("s:"+carMaintenanceCost );
-		logger.debug("s:"+dayTimeAllowance );
-		logger.debug("s:"+foodCost );
-		logger.debug("s:"+lateness );
+		map = payimfService.allowanceDataInsert(map);
 		
-		map.put("nightTimeAllowance",nightTimeAllowance);
-		map.put("carMaintenanceCost",carMaintenanceCost);
-		map.put("dayTimeAllowance",dayTimeAllowance);
-		map.put("foodCost",foodCost);
-		map.put("lateness",lateness);
-		
-		//payimfService.allowanceDataInsert(map);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName(PRE_VIEW_PATH+"allowanceData");
-		
-		return mv;
+		return map;
 	}
 	
 }

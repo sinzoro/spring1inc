@@ -15,7 +15,7 @@
 <script>
 	
 	function AllowanceSaveAjax(){
-		//alert("Allowance");
+		alert("Allowance");
 		
 		//var allowanceDataFrm = document.getElementById("allowanceDataFrm");
 		//alert(allowanceDataFrm);
@@ -23,7 +23,7 @@
 		//allowanceDataFrm.submit();
 		
 		console.log("before start");
-		$("#allowanceDataFrm").ajaxForm({
+		$("#frm").ajaxForm({
 			async : false,
 			cache:false,
 			type:"POST", //전송방식을 정하는 메쏘드
@@ -36,22 +36,16 @@
 			
 			success: function(data){
 				console.log("성공 data : " + JSON.stringify(data));
-				
-				$("#scomHhCst").val(data.scomHhCst);
-				$("#scomNhCst").val(data.scomNhCst);
-				$("#scomLhCst").val(data.scomLhCst);
-				$("#scomElhCst").val(data.scomElhCst);
-				$("#sempCmc").val(data.sempCmc);
-				//alert( $("#sempCmc").val() );
+				$("#allowanceDataFrm").scomNhCst = data.scomNhCst;
 			},
 			error: function(xhr, status, error){
-				console.log("실패");
+				//console.log("실패");
 				//console.log("xhr:"+JSON.stringify(xhr));
 				//console.log("status:"+status);
 				//console.log("error:"+error);
 			},
 			complete: function(event, request, settings){ //마지막에 무조건 실행
-				console.log("완료");
+				//console.log("완료");
 				//console.log("event : " + JSON.stringify(event));
 				//console.log("request : " + request);
 				//console.log("settings : " + settings);
@@ -82,54 +76,41 @@
 					</ul>
 				</div>
 				<div id="rightDiv">
-					<table>
-						<tr>
-							<td>
-								야근 시간당수당
-							</td>
-							<td>
-								<input type="text" name="scomNhCst" id="scomNhCst" value='${ empty list ? "0": list.get(0).scomNhCst }' >
-							</td>
-							<td>
-								차량 유지비
-							</td>
-							<td>
-								<input type="text" name="sempCmc" id="sempCmc" value='${ empty list ? "0": list.get(0).sempCmc }'  >
-							</td>
-						</tr>
-						<tr>
-							<td>
-								주간 시간당수당
-							</td>
-							<td>
-								<input type="text" name="scomHhCst" id="scomHhCst" value='${ empty list ? "0": list.get(0).scomHhCst }' >
-							</td>
-							<td>
-								식대
-							</td>
-							<td>
-								<input type="text" name="scomElhCst" id="scomElhCst" value='${ empty list ? "0": list.get(0).scomElhCst }'  >
-							</td>
-						</tr>
-						<tr>
-							<td>
-								지각
-							</td>
-							<td>
-								<input type="text" name="scomLhCst" id="scomLhCst" value='${ empty list ? "0": list.get(0).scomLhCst }' >
-							</td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td>
-								<input type="button" value="저장" onclick="AllowanceSaveAjax()">
-							</td>
-						</tr>
-					</table>
+					<div id="rightDivIn">
+						<div  id="rightDivIn1">
+							야근 시간당수당 <input type="text" name="scomNhCst" value="${list.get(0).scomNhCst }" >
+						</div>
+						<div  id="rightDivIn2">
+							차량 유지비  <input type="text" name="sempCmc" value="${list.get(0).sempCmc }"  >
+						</div>
+					</div>
+					
+					<div id="rightDivIn">
+						<div  id="rightDivIn1">
+							주간 시간당수당 <input type="text" name="scomHhCst" value="${list.get(0).scomHhCst }" > 
+						</div>
+						<div  id="rightDivIn2">
+							식대  <input type="text" name="scomElhCst" value="${list.get(0).scomElhCst }"  >
+						</div>
+					</div>
+					
+					<div id="rightDivIn">
+						<div  id="rightDivIn1">
+							지각 <input type="text" name="scomLhCst" value="${list.get(0).scomLhCst }" >
+						</div>
+						<div  id="rightDivIn2">
+							
+						</div>
+					</div>
+					
+					<div id="rightDivIn">
+						<div  id="rightDivIn1">
+							
+						</div>
+						<div  id="rightDivIn2">
+							<input type="button" value="저장" onclick="AllowanceSaveAjax()">
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

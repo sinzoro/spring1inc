@@ -31,10 +31,10 @@ public class PayimfDao {
 		
 		int rsNum = 0;
 		if( list.size() == 0 ){
-			this.sqlSession.insert(nameSpaceName + "allowanceInsert");
+			this.sqlSession.insert(nameSpaceName + "allowanceInsert",map);
 			rsNum = 1;
 		}else if( list.size() == 1 ){
-			this.sqlSession.update(nameSpaceName + "allowanceUpdate");
+			this.sqlSession.update(nameSpaceName + "allowanceUpdate",map);
 			rsNum = 1;
 		}else {
 			//System.out.println( "basic 값이 없거나 하나 있지 않습니다." );
