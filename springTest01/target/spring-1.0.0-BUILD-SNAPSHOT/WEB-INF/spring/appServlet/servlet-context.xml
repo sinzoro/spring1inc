@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+
+
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+	<!-- xmlns="http://www.springframework.org/schema/mvc" -->
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<view-controller path="/main" view-name="main" />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
+	<context:component-scan base-package="com.example.spring" />
+
+
+
+
+
+	<!-- <beans:bean id="smsSender" class="com.example.spring.beanTest.SmsSender"> 
+		<beans:property name="value" value="false"></beans:property> <beans:constructor-arg 
+		value="true" ></beans:constructor-arg> </beans:bean> -->
+
+	<!-- <beans:bean id="homeController" class="com.example.spring.HomeController"> 
+		<beans:property name="smsSender" ref="smsSender"></beans:property> </beans:bean> -->
+
+
+
+
+	<!-- <beans:bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" 
+		> <beans:property name="mappings"> <beans:props> <beans:prop key="/login.do">HelloController</beans:prop> 
+		</beans:props> </beans:property> </beans:bean> -->
+
+
+	<beans:bean id="work01" class="com.example.spring.work01.work01">
+		<beans:property name="testValue" value="getset"></beans:property>
+		<!-- <beans:constructor-arg value="const" ></beans:constructor-arg> -->
+	</beans:bean>
+
+	<beans:bean id="HelloController" class="com.example.spring.HelloController">
+		<beans:property name="me" value="HelloController">
+
+		</beans:property>
+	</beans:bean>
+
+	<!-- <beans:bean id="homeController" class="com.example.spring.HomeController"> 
+		<beans:property name="smsSender" ref="smsSender"></beans:property> </beans:bean> -->
+	<beans:bean id="Work01Controller" class="com.example.spring.Work01Controller">
+		<!-- <beans:property name="work01" ref="work01"> ///// </beans:property> -->
+	</beans:bean>
+
+	<beans:bean id="handlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<beans:property name="mappings">
+			<beans:props>
+				<beans:prop key="/test01.do">Work01Controller</beans:prop>
+				<beans:prop key="/login.do">HelloController</beans:prop>
+				<!-- <beans:prop key="/loginTest.do">LoginTestController</beans:prop> -->
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
+
+	<!-- <beans:bean id="CommonInterceptor" class="com.example.spring.common.CommonIntercepter"> -->
+
+	<interceptors>
+		<interceptor>
+			<mapping path="/**" />
+			<exclude-mapping path="/requestParam7.do/**/" />
+			<exclude-mapping path="/add/**/" />
+			<exclude-mapping path="/testLogin/**" />
+			<beans:bean class="com.example.spring.common.CommonIntercepter"></beans:bean>
+		</interceptor>
+
+		<interceptor>
+			<!-- <mapping path="/loginTestRs.do" /> -->
+			<!-- <mapping path="/loginTest.do" /> -->
+			<mapping path="/testLogin/**" />
+			<beans:bean class="com.example.spring.work02.LoginTestIntercepter"></beans:bean>
+		</interceptor>
+
+		<!-- <interceptor> <mapping path="/**" /> <exclude-mapping path="/exclude/**/"> 
+			<exclude-mapping path="/add/**/"> <beans:ref bean="CommonInterceptor"></beans:ref> 
+			<beans:bean class="com.example.spring.comon.CommonInterceptor"></beans:bean> 
+			</interceptor> -->
+		<!-- <interceptor> <mapping path="/b/**" /> <exclude-mapping path="/exclude/**/"> 
+			<exclude-mapping path="/add/**/"> <beans:ref bean="commonInterceptor"></beans:ref> 
+			</interceptor> -->
+	</interceptors>
+
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <beans:property name="maxUploadSize" value="20971520"></beans:property>
+        <beans:property name="maxInMemorySize" value="10485760"></beans:property>
+    </beans:bean>
+
+	<aop:aspectj-autoproxy>
+		
+	</aop:aspectj-autoproxy>
+	
+	<beans:bean id="AdviceLog" class="com.example.spring.common.aop.AdviceLog" />
+
+
+
+
+	<beans:bean class="org.springframework.web.servlet.view.XmlViewResolver" >
+	        <beans:property name="location" value="/WEB-INF/spring/jasper/jaspers-views.xml" />
+	        <beans:property name="order" value="0"/>
+	</beans:bean >
+	
+	
+	
+
+</beans:beans>
