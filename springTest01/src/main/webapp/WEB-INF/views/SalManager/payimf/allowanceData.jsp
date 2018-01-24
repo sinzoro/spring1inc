@@ -61,31 +61,22 @@
 		
 	}
 	
+	// 숫자만 입력, 콤마찍기
 	//콤마찍기
 	function comma(str) {
 	    str = String(str);
 	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 	}
-	 
 	//콤마풀기
 	function uncomma(str) {
 	    str = String(str);
 	    return str.replace(/[^\d]+/g, '');
 	}
-
 	function onlyNumber(obj) {
-		//alert("1");
-		
-		
-	    $(obj).keyup(function(){
-	    	
-	    	obj.value = comma(uncomma(obj.value));
+		$(obj).keyup(function(){
+			obj.value = comma(uncomma(obj.value));
 	    	$(obj).val($(obj).val().replace(/[^0-9]/g,"") );
-	    	
-	        //$(obj).val($(obj).val().replace(/[^0-9]/g,"") );
-	        // $(this).val($(this).val().replace(/[^0-9]/g,"") );
-	        // $(this).val( $(this).val().comma(uncomma(this.value)) );
-	    }); 
+	    });
 	}
 	
 </script>
