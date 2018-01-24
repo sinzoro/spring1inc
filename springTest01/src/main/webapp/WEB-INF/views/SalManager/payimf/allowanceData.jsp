@@ -61,6 +61,33 @@
 		
 	}
 	
+	//콤마찍기
+	function comma(str) {
+	    str = String(str);
+	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	}
+	 
+	//콤마풀기
+	function uncomma(str) {
+	    str = String(str);
+	    return str.replace(/[^\d]+/g, '');
+	}
+
+	function onlyNumber(obj) {
+		//alert("1");
+		
+		
+	    $(obj).keyup(function(){
+	    	
+	    	obj.value = comma(uncomma(obj.value));
+	    	$(obj).val($(obj).val().replace(/[^0-9]/g,"") );
+	    	
+	        //$(obj).val($(obj).val().replace(/[^0-9]/g,"") );
+	        // $(this).val($(this).val().replace(/[^0-9]/g,"") );
+	        // $(this).val( $(this).val().comma(uncomma(this.value)) );
+	    }); 
+	}
+	
 </script>
 
 </head>
@@ -88,13 +115,13 @@
 								야근 시간당수당
 							</td>
 							<td>
-								<input type="text" name="scomNhCst" id="scomNhCst" value='${ empty list ? "0": list.get(0).scomNhCst }' >
+								<input type="text" name="scomNhCst" id="scomNhCst" value='${ empty list ? "0": list.get(0).scomNhCst }' onkeydown="onlyNumber(this)" >
 							</td>
 							<td>
 								차량 유지비
 							</td>
 							<td>
-								<input type="text" name="sempCmc" id="sempCmc" value='${ empty list ? "0": list.get(0).sempCmc }'  >
+								<input type="text" name="sempCmc" id="sempCmc" value='${ empty list ? "0": list.get(0).sempCmc }' onkeydown="onlyNumber(this)" >
 							</td>
 						</tr>
 						<tr>
@@ -102,13 +129,13 @@
 								주간 시간당수당
 							</td>
 							<td>
-								<input type="text" name="scomHhCst" id="scomHhCst" value='${ empty list ? "0": list.get(0).scomHhCst }' >
+								<input type="text" name="scomHhCst" id="scomHhCst" value='${ empty list ? "0": list.get(0).scomHhCst }' onkeydown="onlyNumber(this)" >
 							</td>
 							<td>
 								식대
 							</td>
 							<td>
-								<input type="text" name="scomElhCst" id="scomElhCst" value='${ empty list ? "0": list.get(0).scomElhCst }'  >
+								<input type="text" name="scomElhCst" id="scomElhCst" value='${ empty list ? "0": list.get(0).scomElhCst }' onkeydown="onlyNumber(this)" >
 							</td>
 						</tr>
 						<tr>
@@ -116,7 +143,7 @@
 								지각
 							</td>
 							<td>
-								<input type="text" name="scomLhCst" id="scomLhCst" value='${ empty list ? "0": list.get(0).scomLhCst }' >
+								<input type="text" name="scomLhCst" id="scomLhCst" value='${ empty list ? "0": list.get(0).scomLhCst }' onkeydown="onlyNumber(this)" >
 							</td>
 							<td></td>
 							<td></td>
