@@ -3,6 +3,9 @@ package com.example.spring.salmanager.payimf.service;
 import java.util.HashMap;
 import java.util.List;
 
+import com.example.spring.salmanager.payimf.common.CommaChange;
+
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -19,12 +22,39 @@ public class PayimfService {
 		
 		List<HashMap<String, String>> list = payimfDao.getAllowanceData();
 		
+		HashMap<String, String> map = list.get(0);	///
+		
+		CommaChange commaChange = new CommaChange();
+
+		for( String key : map.keySet() ){
+
+            if( key.equals("salType") || key.equals("scomYymm") )
+            	continue;
+            
+            System.out.println( String.format("키 : %s, 값 : %s", key, map.get(key)) );
+            
+            int result = Integer.parseInt( map.get(key) );
+            String str = new java.text.DecimalFormat("#,###").format(result).toString();
+            map.put( key, str );
+            System.out.println( String.format("키 : %s, 값 : %s", key, map.get(key)) );            
+
+        }
+		
 		return list;
 	}
 	
 	public HashMap<String, String> allowanceDataInsert(HashMap<String, String> map){
 		
 		map.put("divSal", "basic");
+		
+		for( String key : map.keySet() ){
+
+            System.out.println( String.format("키 : %s, 값 : %s", key, map.get(key)) );
+            map.put(key, map.get(key).replace(",","") );
+            System.out.println( String.format("키 : %s, 값 : %s", key, map.get(key)) );            
+
+        }
+
 		
 		int rsNum = payimfDao.allowanceDataInsert(map);
 		if( rsNum == 1) {

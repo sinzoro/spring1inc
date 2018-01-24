@@ -72,10 +72,10 @@
 	    str = String(str);
 	    return str.replace(/[^\d]+/g, '');
 	}
-	function onlyNumber(obj) {
-		$(obj).keyup(function(){
+	function onlyMoneyNumber(obj) {	//	obj 는 this 값 입니다
+		$(obj).val($(obj).val().replace(/[^0-9]/g,"") );
+		$(obj).keyup(function(){			
 			obj.value = comma(uncomma(obj.value));
-	    	$(obj).val($(obj).val().replace(/[^0-9]/g,"") );
 	    });
 	}
 	
@@ -106,13 +106,13 @@
 								야근 시간당수당
 							</td>
 							<td>
-								<input type="text" name="scomNhCst" id="scomNhCst" value='${ empty list ? "0": list.get(0).scomNhCst }' onkeydown="onlyNumber(this)" >
+								<input type="text" name="scomNhCst" id="scomNhCst" value='${ empty list ? "0": list.get(0).scomNhCst }' onkeydown="onlyMoneyNumber(this)" >
 							</td>
 							<td>
 								차량 유지비
 							</td>
 							<td>
-								<input type="text" name="sempCmc" id="sempCmc" value='${ empty list ? "0": list.get(0).sempCmc }' onkeydown="onlyNumber(this)" >
+								<input type="text" name="sempCmc" id="sempCmc" value='${ empty list ? "0": list.get(0).sempCmc }' onkeydown="onlyMoneyNumber(this)" >
 							</td>
 						</tr>
 						<tr>
@@ -120,13 +120,13 @@
 								주간 시간당수당
 							</td>
 							<td>
-								<input type="text" name="scomHhCst" id="scomHhCst" value='${ empty list ? "0": list.get(0).scomHhCst }' onkeydown="onlyNumber(this)" >
+								<input type="text" name="scomHhCst" id="scomHhCst" value='${ empty list ? "0": list.get(0).scomHhCst }' onkeydown="onlyMoneyNumber(this)" >
 							</td>
 							<td>
 								식대
 							</td>
 							<td>
-								<input type="text" name="scomElhCst" id="scomElhCst" value='${ empty list ? "0": list.get(0).scomElhCst }' onkeydown="onlyNumber(this)" >
+								<input type="text" name="scomElhCst" id="scomElhCst" value='${ empty list ? "0": list.get(0).scomElhCst }' onkeydown="onlyMoneyNumber(this)" >
 							</td>
 						</tr>
 						<tr>
@@ -134,7 +134,7 @@
 								지각
 							</td>
 							<td>
-								<input type="text" name="scomLhCst" id="scomLhCst" value='${ empty list ? "0": list.get(0).scomLhCst }' onkeydown="onlyNumber(this)" >
+								<input type="text" name="scomLhCst" id="scomLhCst" value='${ empty list ? "0": list.get(0).scomLhCst }' onkeydown="onlyMoneyNumber(this)" >
 							</td>
 							<td></td>
 							<td></td>
