@@ -19,7 +19,8 @@
 	<mappers><!-- 기능에해당되는쿼리만넣겠다 -->
 		<mapper resource="com/example/spring/department/departmentMapper.xml"/>
 		<mapper resource="com/example/spring/work03/work03Mapper.xml"/>
-		<mapper resource="com/example/spring/Allowance/allowanceMapper.xml"/>
+		<mapper resource="com/example/spring/allowance/allowanceMapper.xml"/>
+		<mapper resource="com/example/spring/emp/EmpMenuMapper.xml"/>
 	</mappers>
 	
 		
